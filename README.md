@@ -54,102 +54,118 @@
   - Acceptance Criteria:
     - The user should be able to fill in their username and password and submit the form to create a new account
     - Upon successful account creation, the user should be redirected to the login page
+Must have
 
 2. As a user, I want to be able to log in to my account so that I can access features restricted to logged in users
   - Acceptance Criteria:
     - The user should be able to enter their username and password and submit the form to log in
     - Upon successful login, the user should be redirected to their dashboard or the homepage
+Must have
 
 3. As a user, I want to be able to add a custom profile picture so I can represent myself better
   - Acceptance Criteria:
     - The user should be able to upload an image file from their device
     - The profile picture should be displayed on the user's profile page and in other relevant sections of the application
+Must have
 
 4. As a user, I want to be able to add a custom biography so others can know more about me
   - Acceptance Criteria:
-    - The user should be able to enter a text-based biography in a designated input field.
+    - The user should be able to enter a biography in their profile settings
     - The biography should be displayed on the user's profile page
+Must have
 
 5. As a user, I want to be able to add any pronouns to my page so others know how to properly refer to me
   - Acceptance Criteria:
     - The user should be able to enter their pronouns in 
     - The selected or entered pronouns should be displayed on the user's profile page and in other relevant sections of the application
+Could have
 
 6. As a user, I want to be able to make posts so I can share my thoughts and experiences
   - Acceptance Criteria:
     - The user should be able to create posts that can be viewed by others
     - The user should be able to add optional images to the post
     - The created post should be displayed on the user's profile page and in other relevant sections of the application.
+Must have
 
 7. As a user, I want to be able to like (cheer) posts from other users so I can show that I like it
   - Acceptance Criteria:
     - The user should be able to like a post
     - The user should be able to unlike a post
     - The number of likes for a post should be updated everytime someone likes or unlikes a post
+Must have
 
 8. As a user, I want to be able to comment on posts from other users so I can share my thoughts on their posts
   - Acceptance Criteria:
     - The user should be able to comment on a post
     - The posted comment should be displayed alongside the post and other comments.
+Must have
 
 9. As a user, I want to be able to follow other users so I see their posts and shares in my feed
   - Acceptance Criteria:
     - The user should be able to click on a "follow" button on another users page to start following them.
     - The followed user's posts and shares should be displayed in the user's feed
+Should have
 
 10. As a user, I want to be able to search for content so I can find things interesting and relevant to myself
    - Acceptance Criteria:
     - The user should be able to enter a search query in a search input field to search
     - The search results should be displayed based on relevance to the search query.
+Should have
 
 11. As a user, I want to be able to receive notifications so I can be notified when someone follows, likes, shares, or comments on my post
    - Acceptance Criteria:
     - The user should receive notifications on a specific dropdown list when there is activity related to their posts (e.g., new likes, comments, shares, or followers).
+Could have
 
 12. As a user, I want to be able to edit or delete my own posts
    - Acceptance Criteria:
     - The user should be able to edit the content of their own posts and update them.
     - The user should be able to delete their own posts.
+Must have
 
 13. As a user, I want to be able to edit or delete my own comments
    - Acceptance Criteria:
     - The user should be able to edit their own comments and update them
     - The user should be able to delete their own comments
+Must have
 
 14. As a user, I want to be able to report inappropriate content to the app admins
    - Acceptance Criteria:
     - The user should be able to flag a post as inappropriate and provide a category and reason for the report
     - The reported content or user should be reviewed by the app administrators
+Must have
 
 15. As a user, I want to be able to repost posts from other users so I can share posts I like with my followers
    - Acceptance Criteria:
     - The user should be able to click on a "repost" button on a post to share it with their followers
     - The reposted post should be displayed on the user's profile page and on their followers feed
+Could have
 
 16. As a user, I want to be able to view trending topics and popular posts so I can keep up with trends
    - Acceptance Criteria:
     - The user should be able to access a trending section
+Could have
 
 17. As a user, I want to be able to report abusive or spammy accounts so that I can help the admins keep this website within guidelines
    - Acceptance Criteria:
     - The user should be able to flag a user as inappropriate and provide a category and reason for the report
     - The reported content or user should be reviewed by the app administrators
+Must have
 
 18. As an admin, I want to be able to delete accounts that violate the rules so I can keep the website within guidelines
    - Acceptance Criteria:
     - The admin should have the necessary privileges to delete user accounts that violate the rules or guidelines of the website.
     - The deleted accounts should be permanently removed from the system.
+Must have
 
 19. As an admin, I want to be able to delete posts that violate the rules so I can keep the website within guidelines
    - Acceptance Criteria:
     - The admin should have the necessary privileges to delete posts that violate the rules or guidelines of the website.
     - The deleted posts should be permanently removed from the system.
-
-
-# Epics
-
+Must have
 
 # Epics
+
 
 1. User Management
   - Epic Description: This epic focuses on user account creation, login, profile customization, and user interaction features such as following, blocking, and reporting.
@@ -170,6 +186,15 @@
 # Progress
 
 Below you can find documentation on the progress of the development categorized into dates. Note that not all days may not be documented
+
+<details>
+<summary> 7/9/2024 </summary>
+
+User stories have been added to github issues and sorted into milestones/epics
+
+<img src="/documentation/7_9_24_user_stories.png">
+<img src="/documentation/7_9_24_epics.png">
+</details>
 
 # Design
 
