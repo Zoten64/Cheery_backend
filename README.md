@@ -309,3 +309,4 @@ Below you can find documentation on the progress of the development categorised 
 ### Code
 
 - Code Institute Django REST walkthrough
+- Django REST documentation
