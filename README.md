@@ -300,3 +300,6 @@ Below you can find documentation on the progress of the development categorised 
 
 # Credits
 
+### Code
+
+- Code Institute Django REST walkthrough
