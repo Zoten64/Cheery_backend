@@ -292,6 +292,12 @@ Below you can find documentation on the progress of the development categorised 
 - Django Filter
   - For an easier time filtering data
 
+- Cloudinary/Django Cloudinary Storage
+  - Used to upload and store images in the cloud
+
+- Pillow
+  - For image processing
+
 # Database Design
 
 # Validation and testing
