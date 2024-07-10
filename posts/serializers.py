@@ -21,7 +21,7 @@ class AttachmentSerializer(serializers.ModelSerializer):
 
 class PostSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
-    attachments = serializers.SerializerMethodField()\
+    attachments = serializers.SerializerMethodField()
     
     def get_attachments(self, obj):
         attachments = Attachment.objects.filter(post=obj)
