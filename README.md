@@ -261,6 +261,11 @@ Below you can find documentation on the progress of the development categorised 
 
 # Bugs and fixes
 
+| Bug | Fix |
+|-----|-----|
+| Users can delete other users even when lacking the permission to do so | Manually override delete option in the view instead of writing custom permissions |
+
+
 # Technologies and tools
 
 ### Languages
@@ -277,6 +282,7 @@ Below you can find documentation on the progress of the development categorised 
 - Cloudinary
 - Github
 - Visual Studio Code
+- Insomnia for api testing
 
 ### Libraries
 
