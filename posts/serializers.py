@@ -1,16 +1,8 @@
 from rest_framework import serializers
 from .models import Post, Attachment
 
-class PostSerializer(serializers.ModelSerializer):
-    owner = serializers.ReadOnlyField(source='owner.username')
-    
-    class Meta:
-        model = Post
-        fields = '__all__'
-
 class AttachmentSerializer(serializers.ModelSerializer):
     post = serializers.ReadOnlyField(source='post.id')
-    
     def validate_attachment(self, value):
         if value.size > 1024 * 1024 * 2:
             raise serializers.ValidationError(
@@ -25,4 +17,16 @@ class AttachmentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Attachment
+        fields = '__all__'
+
+class PostSerializer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
+    attachments = serializers.SerializerMethodField()\
+    
+    def get_attachments(self, obj):
+        attachments = Attachment.objects.filter(post=obj)
+        return AttachmentSerializer(attachments, many=True).data
+
+    class Meta:
+        model = Post
         fields = '__all__'

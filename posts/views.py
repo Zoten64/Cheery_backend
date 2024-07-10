@@ -1,7 +1,8 @@
+from django.db.models import Prefetch, Count
 from django.shortcuts import render
 from rest_framework import generics
 from cheeryapi.permissions import IsOwnerOrReadOnly
-from .models import Post
+from .models import Post, Attachment
 from .serializers import PostSerializer
 
 
