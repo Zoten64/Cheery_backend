@@ -1,6 +1,7 @@
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import generics
+from cheeryapi.permissions import IsOwnerOrReadOnly
 from .models import Profile
 from .serializers import ProfileSerializer, UserSerializer
 
@@ -10,8 +11,9 @@ class ProfileList(generics.ListAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
 
-class ProfileDetail(generics.RetrieveAPIView):
+class ProfileDetail(generics.RetrieveUpdateAPIView):
     '''Retrieve a specific profile'''
+    permission_classes = [IsOwnerOrReadOnly]
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
 
