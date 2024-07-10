@@ -2,6 +2,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import generics
 from cheeryapi.permissions import IsOwnerOrReadOnly
+from posts.models import Post
+from posts.serializers import PostSerializer
 from .models import Profile
 from .serializers import ProfileSerializer, UserSerializer
 
@@ -42,3 +44,12 @@ class ProfileOwner(generics.RetrieveDestroyAPIView):
             user.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
         return Response(status=status.HTTP_403_FORBIDDEN)
+    
+class ProfilePostsList(generics.ListAPIView):
+    '''List all posts associated with a profile'''
+    serializer_class = PostSerializer
+
+    def get_queryset(self):
+        '''Returns all posts associated with the given profile's pk'''
+        profile_pk = self.kwargs.get('pk')
+        return Post.objects.filter(owner__profile=profile_pk)

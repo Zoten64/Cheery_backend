@@ -9,7 +9,7 @@ class PostSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class AttachmentSerializer(serializers.ModelSerializer):
-    post = serializers.PrimaryKeyRelatedField(source='post.id')
+    post = serializers.ReadOnlyField(source='post.id')
     
     def validate_attachment(self, value):
         if value.size > 1024 * 1024 * 2:
