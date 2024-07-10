@@ -19,7 +19,7 @@ class Profile(models.Model):
         ordering = ['-created_at']
 
     def __str__(self):
-        return f"{self.owner}'s profile"
+        return f"owner: {self.owner} id: {self.id}"
 
 def create_profile(sender, instance, created, **kwargs):
     if created:
