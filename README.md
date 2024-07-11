@@ -330,3 +330,4 @@ Below you can find documentation on the progress of the development categorised 
 
 - Code Institute Django REST walkthrough
 - Django REST documentation
+- Django documentation
