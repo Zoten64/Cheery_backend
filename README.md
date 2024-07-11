@@ -217,7 +217,10 @@ Profiles, posts and attachment functionality has been added as well as a custom 
 # Features
 
 # Bugs and fixes
-
+| Bug | Fixe |
+|-----|------|
+| Users can delete other users despite permissions staing they shouldn't be able to | Override delete function and manually check if the authenticated user matches the current user object |
+| Reporting user always set to null despite being authenticated | Override create function in the serializer to include the authenticated user |
 # Technologies and tools
 
 ### Languages
