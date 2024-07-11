@@ -19,7 +19,3 @@ class PostReportSerializer(serializers.ModelSerializer):
     class Meta:
         model = PostReport
         fields = '__all__'
-
-    def create(self, validated_data):
-        validated_data['owner'] = self.context['request'].user
-        return super().create(validated_data)

@@ -10,6 +10,9 @@ class UserReportList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = UserReport.objects.all()
     serializer_class = UserReportSerializer
+    
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
 class UserReportDetail(generics.RetrieveAPIView):
     '''
@@ -25,6 +28,9 @@ class PostReportList(generics.ListCreateAPIView):
     queryset = PostReport.objects.all()
     serializer_class = PostReportSerializer
 
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
 class PostReportDetail(generics.RetrieveAPIView):
     '''
     Retrieve a specific post report and allow the user to update it
@@ -32,3 +38,4 @@ class PostReportDetail(generics.RetrieveAPIView):
     '''
     queryset = PostReport.objects.all()
     serializer_class = PostReportSerializer
+    

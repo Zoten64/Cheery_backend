@@ -23,6 +23,13 @@ class UserReport(models.Model):
     reason = models.TextField(max_length=500, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ['-created_at']
+
+
+    def __str__(self):
+        return f'{self.owner.username} report on {self.reported_user.username}'
+    
 
 class PostReport(models.Model):
     '''Model allowing users to report posts and comments'''
@@ -33,3 +40,9 @@ class PostReport(models.Model):
     category = models.CharField(max_length=100, choices=POST_CATEGORY)
     reason = models.TextField(max_length=500, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f'{self.owner.username} report on {self.reported_post.title}'

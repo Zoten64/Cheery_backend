@@ -17,6 +17,6 @@ class Attachment(models.Model):
     file = models.FileField(upload_to='images/', blank=True, null=True)
     post = models.ForeignKey(Post, on_delete=models.CASCADE, 
                              related_name='post_attachment')
-
+    
     def __str__(self):
         return f"{self.id} : {self.post}"
