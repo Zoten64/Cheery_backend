@@ -12,15 +12,14 @@ class PostTestCase(APITestCase):
 
         user2 = User.objects.create_user(
             username='testuser2', password='pass')
-        self.client.force_authenticate(user=user)
         
-        self.post = Post.objects.create(
+        Post.objects.create(
             title='Test Post',
             content='This is a test post',
             owner=user
         )
 
-        self.post = Post.objects.create(
+        Post.objects.create(
             title='Test Post 2',
             content='This is a test post',
             owner=user2
