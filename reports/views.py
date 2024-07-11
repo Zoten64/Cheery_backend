@@ -11,12 +11,11 @@ class UserReportList(generics.ListCreateAPIView):
     queryset = UserReport.objects.all()
     serializer_class = UserReportSerializer
 
-class UserReportDetail(generics.RetrieveUpdateAPIView):
+class UserReportDetail(generics.RetrieveAPIView):
     '''
     Retrieve a specific user report and allow the user to update it
     Only admins can delete reports
     '''
-    permission_classes = [IsOwnerOrReadOnly]
     queryset = UserReport.objects.all()
     serializer_class = UserReportSerializer
 
@@ -26,11 +25,10 @@ class PostReportList(generics.ListCreateAPIView):
     queryset = PostReport.objects.all()
     serializer_class = PostReportSerializer
 
-class PostReportDetail(generics.RetrieveUpdateAPIView):
+class PostReportDetail(generics.RetrieveAPIView):
     '''
     Retrieve a specific post report and allow the user to update it
     Only admins can delete reports
     '''
-    permission_classes = [IsOwnerOrReadOnly]
     queryset = PostReport.objects.all()
     serializer_class = PostReportSerializer

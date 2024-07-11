@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from .models import UserReport, PostReport
 
 class UserReportSerializer(serializers.ModelSerializer):
-    owner = serializers.ReadOnlyField(source='reporting_user.username')
+    owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:
         model = UserReport
@@ -14,7 +14,7 @@ class UserReportSerializer(serializers.ModelSerializer):
         return super().create(validated_data)
 
 class PostReportSerializer(serializers.ModelSerializer):
-    owner = serializers.ReadOnlyField(source='reporting_user.username')
+    owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:
         model = PostReport
