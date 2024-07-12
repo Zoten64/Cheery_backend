@@ -4,6 +4,7 @@ from rest_framework import generics
 from cheeryapi.permissions import IsOwnerOrReadOnly
 from posts.models import Post
 from posts.serializers import PostSerializer
+from follows.models import Follow
 from .models import Profile
 from .serializers import ProfileSerializer, UserSerializer
 
@@ -53,3 +54,12 @@ class ProfilePostsList(generics.ListAPIView):
         '''Returns all posts associated with the given profile's pk'''
         profile_pk = self.kwargs.get('pk')
         return Post.objects.filter(owner__profile=profile_pk)
+        
+class ProfileFollowersList(generics.ListAPIView):
+    '''List all followers of a profile'''
+    serializer_class = ProfileSerializer
+
+    def get_queryset(self):
+        '''Returns all followers of the given profile's pk'''
+        profile_pk = self.kwargs.get('pk')
+        return Follow.objects.filter(followed_user__profile=profile_pk)
