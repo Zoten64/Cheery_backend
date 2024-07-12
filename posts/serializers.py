@@ -1,7 +1,10 @@
 from rest_framework import serializers
 from .models import Post, Attachment
+from likes.models import Like
+from reposts.models import Repost
 
 class AttachmentSerializer(serializers.ModelSerializer):
+    '''Serializes an attachment object'''
     post = serializers.ReadOnlyField(source='post.id')
     def validate_attachment(self, value):
         if value.size > 1024 * 1024 * 2:
@@ -20,12 +23,27 @@ class AttachmentSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class PostSerializer(serializers.ModelSerializer):
+    '''Serializes a post object'''
     owner = serializers.ReadOnlyField(source='owner.username')
     attachments = serializers.SerializerMethodField()
+    likes_count = serializers.SerializerMethodField()
+    reposts_count = serializers.SerializerMethodField()
+
     
     def get_attachments(self, obj):
+        '''Gets all attachments associated with a post'''
         attachments = Attachment.objects.filter(post=obj)
         return AttachmentSerializer(attachments, many=True).data
+    
+    def get_likes_count(self, obj):
+        '''Gets the number of likes associated with a post'''
+        likes_count = Like.objects.filter(post=obj).count()
+        return likes_count
+    
+    def get_reposts_count(self, obj):
+        '''Gets the number of reposts associated with a post'''
+        repost_count = Repost.objects.filter(post=obj).count()
+        return repost_count
 
     class Meta:
         model = Post
