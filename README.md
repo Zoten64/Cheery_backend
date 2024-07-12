@@ -204,9 +204,19 @@ User stories have been added to github issues and sorted into milestones/epics
 Profiles, posts and attachment functionality has been added as well as a custom view for deleting one's own account
 
 <img src="/documentation/7_10_24_user_stories.png">
-<img src="/documentation/7_10_24_epics.png">!
+<img src="/documentation/7_10_24_epics.png">
 </details>
 
+<details>
+<summary> 7/11/2024 </summary>
+
+Technically 7/12/2024 as it is past midnight
+
+Comments, reports and likes have been added
+
+<img src="/documentation/7_11_24_user_stories.png">
+<img src="/documentation/7_11_24_epics.png">
+</details>
 
 # Design
 
