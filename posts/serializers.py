@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import Post, Attachment
 from likes.models import Like
 from reposts.models import Repost
+from comments.models import Comment
 
 class AttachmentSerializer(serializers.ModelSerializer):
     '''Serializes an attachment object'''
@@ -28,6 +29,7 @@ class PostSerializer(serializers.ModelSerializer):
     attachments = serializers.SerializerMethodField()
     likes_count = serializers.SerializerMethodField()
     reposts_count = serializers.SerializerMethodField()
+    comments_count = serializers.SerializerMethodField()
     engagement_count = serializers.SerializerMethodField()
 
     
@@ -46,14 +48,20 @@ class PostSerializer(serializers.ModelSerializer):
         repost_count = Repost.objects.filter(post=obj).count()
         return repost_count
     
+    def get_comments_count(self, obj):
+        '''Gets the number of comments associated with a post'''
+        comments_count = Comment.objects.filter(post=obj).count()
+        return comments_count
+
     def get_engagement_count(self, obj):
         '''
-        The total of likes and reposts associated with a post
+        The total of likes, comments and reposts associated with a post
         Used to sort by trending
         '''
         repost_count = Repost.objects.filter(post=obj).count()
         likes_count = Like.objects.filter(post=obj).count()
-        engagement_count = repost_count + likes_count
+        comments_count = Comment.objects.filter(post=obj).count()
+        engagement_count = repost_count + likes_count + comments_count
         return engagement_count
 
     class Meta:
