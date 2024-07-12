@@ -12,8 +12,6 @@
 * [User stories](#user-stories)
 * [Epics](#epics)
 * [Progress](#progress)
-* [Design](#design)
-* [Wireframes](#wireframes)
 * [User Manual](#user-manual)
 * [Features](#features)
 * [Bugs and fixes](#bugs-and-fixes)
@@ -210,17 +208,22 @@ Profiles, posts and attachment functionality has been added as well as a custom 
 <details>
 <summary> 7/11/2024 </summary>
 
-Technically 7/12/2024 as it is past midnight
-
 Comments, reports and likes have been added
 
 <img src="/documentation/7_11_24_user_stories.png">
 <img src="/documentation/7_11_24_epics.png">
 </details>
 
-# Design
+<details>
+<summary> 7/12/2024 </summary>
 
-# Wireframes
+Notifications, search functionality, ordering functionality and additional info has been added to profiles and posts
+All user stories have been finished.
+
+<img src="/documentation/7_12_24_user_stories.png">
+<img src="/documentation/7_12_24_epics.png">
+</details>
+
 
 # User manual
 
@@ -238,6 +241,7 @@ Comments, reports and likes have been added
 - CSS
 - JavaScript
 - Python
+- JSON
 
 ### Platforms
 

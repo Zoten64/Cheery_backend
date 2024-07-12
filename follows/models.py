@@ -27,9 +27,8 @@ def create_notification(sender, instance, created, **kwargs):
     if created:
         Notification.objects.create(
             sender=instance.owner,
-            recipient=instance.post.owner,
-            category_message='REPOST',
-            post=instance.post
+            recipient=instance.followed_user,
+            category_message='FOLLOW',
         )
 
 

@@ -6,7 +6,7 @@ from comments.models import Comment
 
 class AttachmentSerializer(serializers.ModelSerializer):
     '''Serializes an attachment object'''
-    post = serializers.ReadOnlyField(source='post.id')
+    owner = serializers.ReadOnlyField(source='owner.username')
     def validate_attachment(self, value):
         if value.size > 1024 * 1024 * 2:
             raise serializers.ValidationError(
