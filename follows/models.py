@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from notifications.models import Notification
 
 # Create your models here.
 
@@ -18,3 +20,17 @@ class Follow(models.Model):
 
     def __str__(self):
         return f'{self.owner.username} follows {self.followed_user.username}'
+
+
+def create_notification(sender, instance, created, **kwargs):
+    '''Create a notification when a user is followed.'''
+    if created:
+        Notification.objects.create(
+            sender=instance.owner,
+            recipient=instance.post.owner,
+            category_message='REPOST',
+            post=instance.post
+        )
+
+
+post_save.connect(create_notification, sender=Follow)
