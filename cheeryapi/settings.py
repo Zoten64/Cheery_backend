@@ -38,7 +38,7 @@ DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
-SITE_ID=1
+SITE_ID = 1
 
 # Application definition
 
@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'rest_auth.registration',
+    'django_filters',
 
     'profiles',
     'posts',
@@ -130,6 +131,9 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.SessionAuthentication',
     ),
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend'
+    ]
 }
 
 # Password validation

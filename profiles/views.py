@@ -1,10 +1,11 @@
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework import generics
+from rest_framework import generics, filters
 from cheeryapi.permissions import IsOwnerOrReadOnly
 from posts.models import Post
 from posts.serializers import PostSerializer
 from follows.models import Follow
+from follows.serializers import FollowSerializer
 from .models import Profile
 from .serializers import ProfileSerializer, UserSerializer
 
@@ -13,6 +14,8 @@ class ProfileList(generics.ListAPIView):
     '''List all profiles'''
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['username']
 
 class ProfileDetail(generics.RetrieveUpdateAPIView):
     '''Retrieve a specific profile'''
@@ -59,7 +62,22 @@ class ProfileFollowersList(generics.ListAPIView):
     '''List all followers of a profile'''
     serializer_class = ProfileSerializer
 
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['username']
+
     def get_queryset(self):
         '''Returns all followers of the given profile's pk'''
         profile_pk = self.kwargs.get('pk')
         return Follow.objects.filter(followed_user__profile=profile_pk)
+
+class ProfileFollowingList(generics.ListAPIView):
+    '''List all profiles followed by a profile'''
+    serializer_class = FollowSerializer
+
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['username']
+
+    def get_queryset(self):
+        '''Returns all profiles followed by the given profile's pk'''
+        profile_pk = self.kwargs.get('pk')
+        return Follow.objects.filter(owner__profile=profile_pk) 

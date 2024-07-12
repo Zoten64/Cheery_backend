@@ -1,4 +1,4 @@
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, filters
 from cheeryapi.permissions import IsOwnerOrReadOnly
 from .models import Post
 from .serializers import PostSerializer
@@ -9,6 +9,9 @@ class PostList(generics.ListCreateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['title', 'content', 'owner__username']
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
