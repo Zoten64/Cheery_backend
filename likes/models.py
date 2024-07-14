@@ -6,6 +6,7 @@ from notifications.models import Notification
 
 # Create your models here.
 
+
 class Like(models.Model):
     '''Like model. Makes sure a post can't be liked twice by the same user.'''
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -19,6 +20,7 @@ class Like(models.Model):
     def __str__(self):
         return f'{self.user.username} likes {self.post.title}'
 
+
 def create_notification(sender, instance, created, **kwargs):
     '''Create a notification when a post is liked.'''
     if created:
@@ -28,5 +30,6 @@ def create_notification(sender, instance, created, **kwargs):
             category_message='LIKED',
             post=instance.post
         )
+
 
 post_save.connect(create_notification, sender=Like)

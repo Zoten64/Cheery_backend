@@ -4,6 +4,7 @@ from .models import Follow
 
 # Create your tests here.
 
+
 class LikeTests(APITestCase):
     def setUp(self):
         '''
@@ -11,10 +12,10 @@ class LikeTests(APITestCase):
         '''
         user1 = User.objects.create_user(username='testuser1',
                                          password='password')
-        self.client.force_authenticate(user=user1) 
+        self.client.force_authenticate(user=user1)
         User.objects.create_user(username='testuser2',
-                                         password='password')
-        
+                                 password='password')
+
     def test_follow(self):
         '''
         Tests if user 1 can follow user 2
@@ -26,9 +27,9 @@ class LikeTests(APITestCase):
         '''
         Test if a user can follow the same user twice
         '''
-        #First follow
+        # First follow
         self.client.post('/follows/', {'followed_user': 2})
-        #Second follow
+        # Second follow
         response = self.client.post('/follows/', {'followed_user': 2})
         self.assertEqual(response.status_code, 400)
 

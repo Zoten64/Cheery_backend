@@ -4,9 +4,11 @@ from likes.models import Like
 from reposts.models import Repost
 from comments.models import Comment
 
+
 class AttachmentSerializer(serializers.ModelSerializer):
     '''Serializes an attachment object'''
     owner = serializers.ReadOnlyField(source='owner.username')
+
     def validate_attachment(self, value):
         if value.size > 1024 * 1024 * 2:
             raise serializers.ValidationError(
@@ -23,6 +25,7 @@ class AttachmentSerializer(serializers.ModelSerializer):
         model = Attachment
         fields = '__all__'
 
+
 class PostSerializer(serializers.ModelSerializer):
     '''Serializes a post object'''
     owner = serializers.ReadOnlyField(source='owner.username')
@@ -32,22 +35,21 @@ class PostSerializer(serializers.ModelSerializer):
     comments_count = serializers.SerializerMethodField()
     engagement_count = serializers.SerializerMethodField()
 
-    
     def get_attachments(self, obj):
         '''Gets all attachments associated with a post'''
         attachments = Attachment.objects.filter(post=obj)
         return AttachmentSerializer(attachments, many=True).data
-    
+
     def get_likes_count(self, obj):
         '''Gets the number of likes associated with a post'''
         likes_count = Like.objects.filter(post=obj).count()
         return likes_count
-    
+
     def get_reposts_count(self, obj):
         '''Gets the number of reposts associated with a post'''
         repost_count = Repost.objects.filter(post=obj).count()
         return repost_count
-    
+
     def get_comments_count(self, obj):
         '''Gets the number of comments associated with a post'''
         comments_count = Comment.objects.filter(post=obj).count()

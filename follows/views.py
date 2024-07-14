@@ -5,6 +5,7 @@ from .serializers import FollowSerializer
 
 # Create your views here.
 
+
 class FollowList(generics.ListCreateAPIView):
     '''View for listing and creating likes'''
     queryset = Follow.objects.all()
@@ -13,6 +14,7 @@ class FollowList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
 
 class FollowDetail(generics.RetrieveDestroyAPIView):
     '''View for retrieving, updating and deleting likes'''

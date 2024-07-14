@@ -5,14 +5,16 @@ from .serializers import UserReportSerializer, PostReportSerializer
 
 # Create your views here.
 
+
 class UserReportList(generics.ListCreateAPIView):
     '''List all user reports'''
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = UserReport.objects.all()
     serializer_class = UserReportSerializer
-    
+
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
 
 class UserReportDetail(generics.RetrieveAPIView):
     '''
@@ -21,6 +23,7 @@ class UserReportDetail(generics.RetrieveAPIView):
     '''
     queryset = UserReport.objects.all()
     serializer_class = UserReportSerializer
+
 
 class PostReportList(generics.ListCreateAPIView):
     '''List all post reports'''
@@ -31,6 +34,7 @@ class PostReportList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
+
 class PostReportDetail(generics.RetrieveAPIView):
     '''
     Retrieve a specific post report and allow the user to update it
@@ -38,4 +42,3 @@ class PostReportDetail(generics.RetrieveAPIView):
     '''
     queryset = PostReport.objects.all()
     serializer_class = PostReportSerializer
-    

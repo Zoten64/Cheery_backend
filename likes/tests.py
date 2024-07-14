@@ -5,6 +5,7 @@ from .models import Like
 
 # Create your tests here.
 
+
 class LikeTests(APITestCase):
     def setUp(self):
         '''
@@ -13,11 +14,11 @@ class LikeTests(APITestCase):
         '''
         user1 = User.objects.create_user(username='testuser1',
                                          password='password')
-        self.client.force_authenticate(user=user1) 
+        self.client.force_authenticate(user=user1)
         Post.objects.create(title='test post 1',
                             content='test content 1',
                             owner=user1)
-        
+
     def test_create_like(self):
         '''
         Test if a like can be created.
@@ -31,9 +32,9 @@ class LikeTests(APITestCase):
         Test if a user can like the same post twice.
         '''
         Post.objects.get(title='test post 1')
-        #First like
+        # First like
         self.client.post('/likes/', {'post': 1})
-        #Second like
+        # Second like
         response = self.client.post('/likes/', {'post': 1})
         self.assertEqual(response.status_code, 400)
 

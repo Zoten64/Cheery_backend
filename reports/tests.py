@@ -22,18 +22,19 @@ class TestUserReports(APITestCase):
                                      "category": "SPAM"})
         self.assertEqual(response.status_code, 201)
 
+
 class TestPostReports(APITestCase):
     def setUp(self):
         '''
-        Setups the test by creating two users and a post and 
+        Setups the test by creating two users and a post and
         logging in as user1
         '''
         user1 = User.objects.create_user(username='testuser1',
                                          password='testpassword')
         user2 = User.objects.create_user(username='testuser2',
-                                 password='testpassword')
+                                         password='testpassword')
         self.client.force_authenticate(user=user1)
-        Post.objects.create(title='Test Post', content='Test Content', 
+        Post.objects.create(title='Test Post', content='Test Content',
                             owner=user2)
 
     def test_post_report(self):

@@ -30,4 +30,5 @@ def create_notification(sender, instance, created, **kwargs):
             post=instance.post
         )
 
+
 post_save.connect(create_notification, sender=Repost)

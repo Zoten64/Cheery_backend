@@ -6,9 +6,11 @@ from django.db.models.signals import post_save
 from notifications.models import Notification
 
 # Create your models here.
+
+
 class Comment(models.Model):
     '''Model for comments on posts'''
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, 
+    post = models.ForeignKey(Post, on_delete=models.CASCADE,
                              related_name='comments')
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
@@ -17,7 +19,7 @@ class Comment(models.Model):
 
     def __str__(self):
         return f'{self.owner.username}\'s comment on {self.post.title}'
-    
+
 
 def create_notification(sender, instance, created, **kwargs):
     '''Create a notification when a user is followed.'''
@@ -31,4 +33,3 @@ def create_notification(sender, instance, created, **kwargs):
 
 
 post_save.connect(create_notification, sender=Comment)
-

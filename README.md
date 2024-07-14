@@ -2,9 +2,7 @@
 
 ### The happy social media
 
-<img src="" alt="Place a thumbnail here">
-
-[Deployed website]()
+[Deployed website](https://zoten64-cheery-api-a879390d9f76.herokuapp.com/)
 
 ## Table of Contents:
 
@@ -23,7 +21,11 @@
 
 # Goals and target audience
 
-# User stories
+The goal of this project is to provide an API (backend) for the frontend that will be built using React.js. 
+
+Cheery is a social media platform mainly aimed at providing positivity in a world where social media is often filled with negativity and algorithms designed to cause outrage to farm engagement through arguments. Here trolls and bots are not allowed.
+
+The target audience is aimed at those tired of toxic social media apps that does nothing but bring your mood down
 
 # User stories
 
@@ -250,67 +252,8 @@ All user stories have been finished.
 - Cloudinary
 - Github
 - Visual Studio Code
-
-### Libraries
-
-- Django
-  - Used as the backend framework
-
-- Dj database URL
-  - Used to access the database
-
-- Django REST Framework
-  - Used to make the API
-
-- Django Filter
-  - For an easier time filtering data
-
-# Database Design
-
-# Validation and testing
-
-# Deployment
-
-# Credits
-
-
-
-# Progress
-
-Below you can find documentation on the progress of the development categorised into dates. Note that not all days many not be documented
-
-# Design
-
-# Wireframes
-
-# User manual
-
-# Features
-
-# Bugs and fixes
-
-| Bug | Fix |
-|-----|-----|
-| Users can delete other users even when lacking the permission to do so | Manually override delete option in the view instead of writing custom permissions |
-
-
-# Technologies and tools
-
-### Languages
-
-- HTML
-- CSS
-- JavaScript
-- Python
-
-### Platforms
-
-- Heroku
-- Code institute postgres database
-- Cloudinary
-- Github
-- Visual Studio Code
 - Insomnia for api testing
+- Pycodestyle for validation
 
 ### Libraries
 
@@ -326,17 +269,122 @@ Below you can find documentation on the progress of the development categorised 
 - Django Filter
   - For an easier time filtering data
 
-- Cloudinary/Django Cloudinary Storage
-  - Used to upload and store images in the cloud
+- Django Allauth
+  - For authentication
+
+- Django REST Auth and Dj REST auth
+  - Provides drf API endpoints for allauth
+
+- DjangoREST Frmaework SimpleJWT
+  - Used for json web tokens
+
+- Django CORS headers
+  - Provides Cross Origin Resource Sharing for Django
+
+- Cloudinary and Django Cloudinary Storage
+  - Libraries to handle image uploads to cloudinary
 
 - Pillow
-  - For image processing
+  - Adds image processing capabilities
 
-# Database Design
+- Gunicorn
+  - WSGI HTTP server, required for heroku deployment
+
+- Psycopg2
+  -  PostgreSQL adaptor for python
+
+### Dependencies
+
+These are dependencies required for the above libraries
+
+- Asgiref
+  - Required by Django
+
+- SQLParse
+  - Required by Django
+
+- tzdata
+  - Required by Django
+
+- Typing Extensions
+  - Required by Dj Database
+
+- Requests
+  - Required by Django Cloudinary Storage
+
+- Certifi
+  - Required by Requests and Cloudinary
+
+- Charset Normalizer
+  - Required by Requests
+
+- Idna
+  - Required by Requests
+
+- URLlib3
+  - Required by Requests and Cloudinary
+
+- Six
+  - Required by Cloudinary and DjangoREST auth
+
+- PyJWT
+  - Required by DjangoREST Framework SimpleJWT
+
+- Packaging
+  - Required by gunicorn
+
 
 # Validation and testing
 
+### Validation
+
+Pycodestyle was used for validating the code directory by directory, excluding the migrations folders. Running without errors = no errors found
+
+<details>
+<summary> Follows </summary>
+<img src="/documentation/validation/follows_pep8.png">
+</details>
+
+<details>
+<summary> Likes </summary>
+<img src="/documentation/validation/likes_pep8.png">
+</details>
+
+<details>
+<summary> Notifications </summary>
+<img src="/documentation/validation/notifications_pep8.png">
+</details>
+
+<details>
+<summary> Posts </summary>
+<img src="/documentation/validation/posts_pep8.png">
+</details>
+
+<details>
+<summary> Profiles </summary>
+<img src="/documentation/validation/profiles_pep8.png">
+</details>
+
+
+<details>
+<summary> Reports </summary>
+<img src="/documentation/validation/reports_pep8.png">
+</details>
+
+<details>
+<summary> Reposts </summary>
+<img src="/documentation/validation/reposts_pep8.png">
+</details>
+
+### Automated Testing
+
+This project features 29 unit tests, all of which pass
+
+<img src="documentation/unit_testing.png" >
+
 # Deployment
+
+
 
 # Credits
 

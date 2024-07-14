@@ -12,10 +12,12 @@ class NotificationList(generics.ListAPIView):
 
     def get_queryset(self):
         return Notification.objects.filter(recipient=self.request.user)
-    
+
+
 class NotificationDetail(generics.RetrieveUpdateDestroyAPIView):
     '''Retrieve, update or delete a notification.'''
     serializer_class = NotificationSerializer
     permission_classes = [permissions.IsAuthenticated]
+
     def get_queryset(self):
         return Notification.objects.filter(recipient=self.request.user)

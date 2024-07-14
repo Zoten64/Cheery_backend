@@ -19,6 +19,7 @@ class PostList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
+
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     '''
     Retrieves a specific post
@@ -27,6 +28,7 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     permission_classes = [IsOwnerOrReadOnly]
+
 
 class AttachmentList(generics.ListCreateAPIView):
     '''Lists all attachments'''
@@ -39,11 +41,11 @@ class AttachmentList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         '''
-        Overrides the perform_create method to ensure that 
+        Overrides the perform_create method to ensure that
         the user owns the post
         '''
         post_id = self.request.data.get('post')
-        #If there is no post ID specidied raise error
+        # If there is no post ID specidied raise error
         if not post_id:
             raise HttpResponseBadRequest("Post ID must be provided.")
 
@@ -56,7 +58,8 @@ class AttachmentList(generics.ListCreateAPIView):
             raise PermissionDenied("You do not own this post.")
 
         serializer.save(owner=self.request.user)
-        
+
+
 class AttachmentDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Attachment.objects.all()
     serializer_class = AttachmentSerializer

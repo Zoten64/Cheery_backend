@@ -22,16 +22,16 @@ class ProfileTests(APITestCase):
 
     def test_update_profile(self):
         '''Tests if the profile can be updated.'''
-        response = self.client.put('/profiles/1/', {'username': 'testusername'})
+        response = self.client.put(
+            '/profiles/1/', {'username': 'testusername'})
         self.assertEqual(response.status_code, 200)
 
     def test_retrieve_user(self):
         '''Tests if the user detail view is accessible.'''
         response = self.client.get('/profiles/1/owner')
         self.assertEqual(response.status_code, 200)
-    
+
     def test_delete_user(self):
         '''Tests if a user can be deleted.'''
         response = self.client.delete('/profiles/1/owner')
         self.assertEqual(response.status_code, 204)
-        

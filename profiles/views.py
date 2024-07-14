@@ -17,6 +17,7 @@ class ProfileList(generics.ListAPIView):
     filter_backends = [filters.SearchFilter]
     search_fields = ['username']
 
+
 class ProfileDetail(generics.RetrieveUpdateAPIView):
     '''Retrieve a specific profile'''
     permission_classes = [IsOwnerOrReadOnly]
@@ -29,7 +30,7 @@ class ProfileOwner(generics.RetrieveDestroyAPIView):
     Retrieve the user associated with a profile
     Allows for deletion of account
     '''
-    serializer_class = UserSerializer 
+    serializer_class = UserSerializer
 
     def get_object(self):
         """
@@ -38,7 +39,7 @@ class ProfileOwner(generics.RetrieveDestroyAPIView):
         profile_pk = self.kwargs.get('pk')
         profile = Profile.objects.get(pk=profile_pk)
         return profile.owner
-    
+
     def delete(self, request, *args, **kwargs):
         """
         Deletes the user associated with the given profile's pk.
@@ -48,7 +49,8 @@ class ProfileOwner(generics.RetrieveDestroyAPIView):
             user.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
         return Response(status=status.HTTP_403_FORBIDDEN)
-    
+
+
 class ProfilePostsList(generics.ListAPIView):
     '''List all posts associated with a profile'''
     serializer_class = PostSerializer
@@ -57,7 +59,8 @@ class ProfilePostsList(generics.ListAPIView):
         '''Returns all posts associated with the given profile's pk'''
         profile_pk = self.kwargs.get('pk')
         return Post.objects.filter(owner__profile=profile_pk)
-        
+
+
 class ProfileFollowersList(generics.ListAPIView):
     '''List all followers of a profile'''
     serializer_class = ProfileSerializer
@@ -70,6 +73,7 @@ class ProfileFollowersList(generics.ListAPIView):
         profile_pk = self.kwargs.get('pk')
         return Follow.objects.filter(followed_user__profile=profile_pk)
 
+
 class ProfileFollowingList(generics.ListAPIView):
     '''List all profiles followed by a profile'''
     serializer_class = FollowSerializer
@@ -80,4 +84,4 @@ class ProfileFollowingList(generics.ListAPIView):
     def get_queryset(self):
         '''Returns all profiles followed by the given profile's pk'''
         profile_pk = self.kwargs.get('pk')
-        return Follow.objects.filter(owner__profile=profile_pk) 
+        return Follow.objects.filter(owner__profile=profile_pk)

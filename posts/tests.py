@@ -3,6 +3,8 @@ from .models import Post
 from django.contrib.auth.models import User
 
 # Create your tests here.
+
+
 class PostTestCase(APITestCase):
     def setUp(self):
         '''creates 2 users with a post each'''
@@ -12,7 +14,7 @@ class PostTestCase(APITestCase):
 
         user2 = User.objects.create_user(
             username='testuser2', password='pass')
-        
+
         Post.objects.create(
             title='Test Post',
             content='This is a test post',
@@ -24,6 +26,7 @@ class PostTestCase(APITestCase):
             content='This is a test post',
             owner=user2
         )
+
     def test_post_list(self):
         '''Tests if the post list view is accessible'''
         response = self.client.get('/posts/')

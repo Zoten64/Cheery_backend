@@ -10,7 +10,7 @@ class Profile(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     username = models.CharField(max_length=50, blank=True)
     bio = models.TextField(max_length=255, blank=True)
-    #Placeholder image, will be updated later with a custom default
+    # Placeholder image, will be updated later with a custom default
     image = models.ImageField(
         upload_to='images/', default='../default_profile_ddx8gv')
     pronouns = models.CharField(max_length=50, blank=True)
@@ -20,6 +20,7 @@ class Profile(models.Model):
 
     def __str__(self):
         return f"owner: {self.owner} id: {self.id}"
+
 
 def create_profile(sender, instance, created, **kwargs):
     if created:

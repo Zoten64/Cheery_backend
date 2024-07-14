@@ -4,6 +4,7 @@ from posts.models import Post
 
 # Create your tests here.
 
+
 class LikeTests(APITestCase):
     def setUp(self):
         '''
@@ -12,11 +13,11 @@ class LikeTests(APITestCase):
         '''
         user1 = User.objects.create_user(username='testuser1',
                                          password='password')
-        self.client.force_authenticate(user=user1) 
+        self.client.force_authenticate(user=user1)
         Post.objects.create(title='test post 1',
                             content='test content 1',
                             owner=user1)
-        
+
     def test_create_repost(self):
         '''
         Test if a repost can be created.
