@@ -3,6 +3,8 @@ from .models import Post, Attachment
 from likes.models import Like
 from reposts.models import Repost
 from comments.models import Comment
+from taggit.serializers import (TagListSerializerField,
+                                TaggitSerializer)
 
 
 class AttachmentSerializer(serializers.ModelSerializer):
@@ -26,7 +28,7 @@ class AttachmentSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class PostSerializer(serializers.ModelSerializer):
+class PostSerializer(TaggitSerializer, serializers.ModelSerializer):
     '''Serializes a post object'''
     owner = serializers.ReadOnlyField(source='owner.username')
     attachments = serializers.SerializerMethodField()
@@ -34,6 +36,7 @@ class PostSerializer(serializers.ModelSerializer):
     reposts_count = serializers.SerializerMethodField()
     comments_count = serializers.SerializerMethodField()
     engagement_count = serializers.SerializerMethodField()
+    tags = TagListSerializerField()
 
     def get_attachments(self, obj):
         '''Gets all attachments associated with a post'''

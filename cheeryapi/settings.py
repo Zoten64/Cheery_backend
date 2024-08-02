@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'rest_auth.registration',
     'corsheaders',
     'django_filters',
+    'taggit',
 
     'profiles',
     'posts',

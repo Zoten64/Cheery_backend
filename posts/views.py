@@ -14,7 +14,7 @@ class PostList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     filter_backends = [filters.SearchFilter]
-    search_fields = ['title', 'content', 'owner__username']
+    search_fields = ['title', 'content', 'owner__username', 'tags__name']
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
@@ -61,6 +61,20 @@ class AttachmentList(generics.ListCreateAPIView):
 
 
 class AttachmentDetail(generics.RetrieveUpdateDestroyAPIView):
+    '''Displays a specific attachment'''
     queryset = Attachment.objects.all()
     serializer_class = AttachmentSerializer
     permission_classes = [IsOwnerOrReadOnly]
+
+class TagList(generics.ListAPIView):
+    '''
+    View for searching for and retrieving posts based on tags
+    Other searchable views will return posts matching any param
+    This view only returns posts macthing a tag.
+    Syntax: {url}/posts/tags/?search={tagname}
+    '''
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['tags__name']

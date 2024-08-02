@@ -196,8 +196,6 @@ User stories have been added to github issues and sorted into milestones/epics
 <img src="/documentation/7_9_24_epics.png">
 </details>
 
-
-
 <details>
 <summary> 7/10/2024 </summary>
 

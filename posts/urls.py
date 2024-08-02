@@ -6,4 +6,5 @@ urlpatterns = [
     path('<int:pk>/', views.PostDetail.as_view()),
     path('attachments/', views.AttachmentList.as_view()),
     path('attachments/<int:pk>/', views.AttachmentDetail.as_view()),
+    path('tags/', views.TagList.as_view()),
 ]
